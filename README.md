@@ -26,3 +26,6 @@ Ouput: MV10 FRH
 Example 2 <p>
 Input: YA, 25/09/2001 <br>
 Output: YA51 YHL
+
+
+Out of my two solutions I prefer V1 because it requires less storage and is much more consistent when more and more values are added in. However, I was unsure if the further changes to my code would be more difficult so I added the second option as it didn't take long
