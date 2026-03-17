@@ -96,6 +96,17 @@ class AbstractNumberPlateGeneratorTests:
         plate = self.generator.generate_number_plate("AB", "15/11/2015")
         self.assertEqual(plate[2:4], "65")
 
+    # January and February belong to the *previous* year's September group
+    # e.g. Feb 2015 is in the "Sep 2014" half-year → 14 + 50 = 64
+
+    def test_january_uses_previous_year_plus_50(self):
+        plate = self.generator.generate_number_plate("AB", "15/01/2015")
+        self.assertEqual(plate[2:4], "64")
+
+    def test_february_uses_previous_year_plus_50(self):
+        plate = self.generator.generate_number_plate("AB", "15/02/2015")
+        self.assertEqual(plate[2:4], "64")
+
 
 class NumberPlateGeneratorTests(AbstractNumberPlateGeneratorTests, unittest.TestCase):
     def get_generator(self) -> AbstractNumberPlateGenerator:

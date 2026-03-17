@@ -19,8 +19,10 @@ class NumberPlateGeneratorV2 (AbstractNumberPlateGenerator):
             raise ValueError("Created date cannot be in the future")
         month = created_date_obj.month
         year = created_date_obj.year
-        if month <= 2 or month >= 9:
+        if month >= 9:
             year += 50
+        if month <= 2:
+            year += 49
         number_plate_prefix += str(year)[-2:]
         return f"{number_plate_prefix} {self.create_random_letters(number_plate_prefix)}"
     
